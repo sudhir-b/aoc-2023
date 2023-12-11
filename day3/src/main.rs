@@ -26,16 +26,12 @@ fn part1() {
         }
 
         for number_index in &number_indexes {
-            println!("{:?}", number_index);
-
             // check same line
             let number_value = char_vec[number_index.0 as usize..number_index.1 as usize]
                 .iter()
                 .collect::<String>()
                 .parse::<i32>()
                 .unwrap();
-
-            println!("number value {}", number_value);
 
             let before_index;
             if number_index.0 - 1 < 0 {
@@ -44,12 +40,8 @@ fn part1() {
                 before_index = (number_index.0 - 1) as usize;
             }
 
-            println!("before index {}", before_index);
-
             let previous_char = char_vec[before_index];
-            println!("previous char {}", previous_char);
             if !previous_char.is_digit(10) && previous_char != '.' {
-                println!("symbol found");
                 sum += number_value;
                 continue;
             }
@@ -57,9 +49,7 @@ fn part1() {
             let after_index = number_index.1 as usize;
             if after_index != char_vec.len() {
                 let next_char = char_vec[after_index];
-                println!("next char {}", next_char);
                 if !next_char.is_digit(10) && next_char != '.' {
-                    println!("symbol found");
                     sum += number_value;
                     continue;
                 }
@@ -78,10 +68,8 @@ fn part1() {
                 let previous_chars = previous_char_vec[before_index..slice_end_index]
                     .iter()
                     .collect::<String>();
-                println!("previous line chars {}", previous_chars);
                 // check for non-digit chars that are not periods
                 if previous_chars.chars().any(|c| !c.is_digit(10) && c != '.') {
-                    println!("symbol found");
                     sum += number_value;
                     continue;
                 }
@@ -94,10 +82,8 @@ fn part1() {
                 let next_chars = next_char_vec[before_index..slice_end_index]
                     .iter()
                     .collect::<String>();
-                println!("next line chars {}", next_chars);
                 // check for non-digit chars that are not periods
                 if next_chars.chars().any(|c| !c.is_digit(10) && c != '.') {
-                    println!("symbol found");
                     sum += number_value;
                     continue;
                 }
