@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 fn part1() {
     let input = include_str!("./input.txt");
     let lines: Vec<_> = input.lines().collect();
@@ -94,6 +96,64 @@ fn part1() {
     println!("{}", sum);
 }
 
+fn part2() {
+    let input = include_str!("./input.txt");
+    let grid: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
+    let mut sum = 0u32;
+
+    for (i, row) in grid.iter().enumerate() {
+        for (j, &cell) in row.iter().enumerate() {
+            if cell == '*' {
+                let mut numbers = HashSet::new();
+
+                for di in -1..=1 {
+                    for dj in -1..=1 {
+                        if di == 0 && dj == 0 {
+                            continue;
+                        } // Skip the center cell
+                        if let Some(row) = grid.get((i as i32 + di) as usize) {
+                            if let Some(&c) = row.get((j as i32 + dj) as usize) {
+                                if c.is_digit(10) {
+                                    let mut start = (j as i32 + dj) as usize;
+
+                                    while start > 0 && row[start - 1].is_digit(10) {
+                                        start -= 1;
+                                    }
+
+                                    let mut end = (j as i32 + dj) as usize;
+                                    while end < row.len() - 1 && row[end + 1].is_digit(10) {
+                                        end += 1;
+                                    }
+
+                                    let number = row[start..=end]
+                                        .iter()
+                                        .collect::<String>()
+                                        .parse::<i32>()
+                                        .unwrap();
+
+                                    numbers.insert(number);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if numbers.len() == 2 {
+                    let mut product = 1;
+                    for number in numbers {
+                        product *= number as u32;
+                    }
+
+                    sum += product;
+                }
+            }
+        }
+    }
+
+    println!("{}", sum);
+}
+
 fn main() {
     part1();
+    part2();
 }
