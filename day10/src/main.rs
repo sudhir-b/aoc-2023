@@ -162,6 +162,9 @@ fn part2() {
     // go through and mark path on a copy of the grid
     // go around and fill in characters on one side in direction of travel until you hit a pipe
     // count number of filled in characters
+    // NOTE: it's lucky this worked out since the filled in characters could have all been
+    //       outside the path - it turns out there's a more generic ray casting algorithm that would
+    //       have been guaranteed to work: https://en.wikipedia.org/wiki/Point_in_polygon
 
     let input = include_str!("./input.txt");
 
