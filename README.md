@@ -1,8 +1,8 @@
-# Advent of Code 2023 Solutions
+# Solutions Advent of Code 2023
 
-This repository contains solutions for the Advent of Code 2023 programming challenges, implemented in Rust. Each day's solution is organized in its own directory with separate implementations for both parts of the daily challenge.
+Ce dépôt contient les solutions des défis de programmation Advent of Code 2023, implémentées en Rust. Chaque solution journalière est organisée dans son propre répertoire avec des implémentations distinctes pour les deux parties du défi quotidien.
 
-## Project Structure
+## Structure du Projet
 
 ```
 ├── day1/
@@ -19,65 +19,65 @@ This repository contains solutions for the Advent of Code 2023 programming chall
 └── day12/
 ```
 
-Each day's directory contains:
-- `src/main.rs`: Solution implementation
-- `input.txt`: Challenge input data
+Chaque répertoire journalier contient :
+- `src/main.rs` : Implémentation de la solution
+- `input.txt` : Données d'entrée du défi
 
-## Prerequisites
+## Prérequis
 
-- Rust (latest stable version)
-- Cargo (Rust's package manager)
+- Rust (dernière version stable)
+- Cargo (gestionnaire de paquets de Rust)
 
-## Getting Started
+## Pour Commencer
 
-1. Clone the repository:
+1. Cloner le dépôt :
 ```bash
-git clone https://github.com/yourusername/aoc-2023.git
+git clone https://github.com/votrenomdutilisateur/aoc-2023.git
 cd aoc-2023
 ```
 
-2. Run a specific day's solution:
+2. Exécuter la solution d'un jour spécifique :
 ```bash
 cd day1
 cargo run
 ```
 
-## Solutions Overview
+## Aperçu des Solutions
 
-- **Day 1**: Text processing and number extraction
-- **Day 2**: Game simulation and constraint validation
-- **Day 3**: Grid processing and number scanning
-- **Day 4**: Card game scoring system
-- **Day 5**: Range mapping and optimization
-- **Day 6**: Race timing calculations
-- **Day 7**: Card hand classification and ranking
-- **Day 8**: Graph traversal and path finding
-- **Day 9**: Sequence prediction and extrapolation
-- **Day 10**: Pipe maze navigation and enclosed area calculation
-- **Day 11**: Galaxy expansion and distance calculation
-- **Day 12**: Dynamic programming with pattern matching
+- **Jour 1** : Traitement de texte et extraction de nombres
+- **Jour 2** : Simulation de jeu et validation de contraintes
+- **Jour 3** : Traitement de grille et analyse de nombres
+- **Jour 4** : Système de pointage de jeu de cartes
+- **Jour 5** : Cartographie de plages et optimisation
+- **Jour 6** : Calculs de temps de course
+- **Jour 7** : Classification et classement des mains de cartes
+- **Jour 8** : Parcours de graphe et recherche de chemin
+- **Jour 9** : Prédiction de séquences et extrapolation
+- **Jour 10** : Navigation dans un labyrinthe de tuyaux et calcul de zone fermée
+- **Jour 11** : Expansion galactique et calcul de distance
+- **Jour 12** : Programmation dynamique avec correspondance de motifs
 
-## Implementation Details
+## Détails d'Implémentation
 
-Each day's solution is implemented with performance and readability in mind. Solutions typically include:
-- Part 1 and Part 2 implementations
-- Helper functions for specific calculations
-- Efficient data structures for optimal performance
-- Comments explaining complex logic
+Chaque solution journalière est implémentée en tenant compte des performances et de la lisibilité. Les solutions incluent généralement :
+- Implémentations des Parties 1 et 2
+- Fonctions auxiliaires pour les calculs spécifiques
+- Structures de données efficaces pour des performances optimales
+- Commentaires expliquant la logique complexe
 
-## Running Tests
+## Exécution des Tests
 
-While formal tests aren't included, each solution can be verified against the example inputs provided in the daily challenges.
+Bien que les tests formels ne soient pas inclus, chaque solution peut être vérifiée par rapport aux exemples d'entrées fournis dans les défis quotidiens.
 
-## Contributing
+## Contribution
 
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+N'hésitez pas à soumettre des problèmes, forker le dépôt et créer des pull requests pour toute amélioration.
 
-## License
+## Licence
 
-This project is open source and available under the MIT License.
+Ce projet est open source et disponible sous la Licence MIT.
 
-## Acknowledgments
+## Remerciements
 
-- Thanks to [Advent of Code](https://adventofcode.com/) for creating these challenging problems
-- Credits to the Rust community for the excellent documentation and tools
+- Merci à [Advent of Code](https://adventofcode.com/) pour la création de ces défis stimulants
+- Merci à la communauté Rust pour l'excellente documentation et les outils
