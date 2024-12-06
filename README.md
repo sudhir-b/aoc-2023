@@ -1,8 +1,8 @@
-# Solutions Advent of Code 2023
+# Mes Solutions pour l'Advent of Code 2023 🎄
 
-Ce dépôt contient les solutions des défis de programmation Advent of Code 2023, implémentées en Rust. Chaque solution journalière est organisée dans son propre répertoire avec des implémentations distinctes pour les deux parties du défi quotidien.
+Salut ! 👋 Tu trouveras ici toutes mes solutions pour l'Advent of Code 2023. J'ai tout codé en Rust (parce que pourquoi pas ?). Chaque jour a son petit dossier avec les solutions des deux parties du défi.
 
-## Structure du Projet
+## Comment c'est organisé ? 📁
 
 ```
 ├── day1/
@@ -19,65 +19,72 @@ Ce dépôt contient les solutions des défis de programmation Advent of Code 202
 └── day12/
 ```
 
-Chaque répertoire journalier contient :
-- `src/main.rs` : Implémentation de la solution
-- `input.txt` : Données d'entrée du défi
+Dans chaque dossier, tu trouveras :
+- `src/main.rs` : Le code qui fait tout le boulot
+- `input.txt` : Les données du défi
 
-## Prérequis
+## Ce qu'il te faut pour commencer 🚀
 
-- Rust (dernière version stable)
-- Cargo (gestionnaire de paquets de Rust)
+- Rust (la dernière version stable fera l'affaire)
+- Cargo (il vient avec Rust, donc pas de souci)
 
-## Pour Commencer
+## On commence ! 🎮
 
-1. Cloner le dépôt :
+1. Récupère le code :
 ```bash
 git clone https://github.com/votrenomdutilisateur/aoc-2023.git
 cd aoc-2023
 ```
 
-2. Exécuter la solution d'un jour spécifique :
+2. Pour lancer une solution :
 ```bash
 cd day1
 cargo run
 ```
+Super simple, non ? 😉
 
-## Aperçu des Solutions
+## Un petit aperçu des défis relevés 💪
 
-- **Jour 1** : Traitement de texte et extraction de nombres
-- **Jour 2** : Simulation de jeu et validation de contraintes
-- **Jour 3** : Traitement de grille et analyse de nombres
-- **Jour 4** : Système de pointage de jeu de cartes
-- **Jour 5** : Cartographie de plages et optimisation
-- **Jour 6** : Calculs de temps de course
-- **Jour 7** : Classification et classement des mains de cartes
-- **Jour 8** : Parcours de graphe et recherche de chemin
-- **Jour 9** : Prédiction de séquences et extrapolation
-- **Jour 10** : Navigation dans un labyrinthe de tuyaux et calcul de zone fermée
-- **Jour 11** : Expansion galactique et calcul de distance
-- **Jour 12** : Programmation dynamique avec correspondance de motifs
+- **Jour 1** : On joue avec du texte et on cherche des nombres
+- **Jour 2** : Un petit jeu avec des règles à respecter
+- **Jour 3** : On se balade dans une grille à la recherche de nombres
+- **Jour 4** : Un jeu de cartes qui rapporte des points
+- **Jour 5** : Des calculs un peu tordus avec des intervalles
+- **Jour 6** : Une course contre la montre !
+- **Jour 7** : Du poker revisité façon Advent of Code
+- **Jour 8** : Une balade dans un labyrinthe de graphes
+- **Jour 9** : On joue aux devinettes avec des suites de nombres
+- **Jour 10** : Un casse-tête avec des tuyaux qui s'entremêlent
+- **Jour 11** : Des galaxies qui s'éloignent (mais pas trop)
+- **Jour 12** : De la programmation dynamique qui se prend la tête
 
-## Détails d'Implémentation
+## Comment c'est codé ? 🤓
 
-Chaque solution journalière est implémentée en tenant compte des performances et de la lisibilité. Les solutions incluent généralement :
-- Implémentations des Parties 1 et 2
-- Fonctions auxiliaires pour les calculs spécifiques
-- Structures de données efficaces pour des performances optimales
-- Commentaires expliquant la logique complexe
+J'ai essayé de faire un truc propre et rapide à la fois. Dans chaque solution, tu trouveras :
+- Le code pour la partie 1 et la partie 2
+- Des petites fonctions utiles pour les calculs
+- Des structures de données bien pensées (enfin j'espère !)
+- Des commentaires quand ça devient un peu compliqué
 
-## Exécution des Tests
+## Les tests ? 🧪
 
-Bien que les tests formels ne soient pas inclus, chaque solution peut être vérifiée par rapport aux exemples d'entrées fournis dans les défis quotidiens.
+Bon, je vais être honnête : y'a pas de tests formels. Mais tu peux toujours vérifier que ça marche avec les exemples donnés dans les défis !
 
-## Contribution
+## Tu veux contribuer ? 🤝
 
-N'hésitez pas à soumettre des problèmes, forker le dépôt et créer des pull requests pour toute amélioration.
+Vas-y ! N'hésite pas à :
+- Signaler des bugs
+- Proposer des améliorations
+- Forker le projet
+- Envoyer des pull requests
 
-## Licence
+On est là pour s'amuser et apprendre ensemble ! 
 
-Ce projet est open source et disponible sous la Licence MIT.
+## Licence 📜
 
-## Remerciements
+C'est open source avec une licence MIT. Fais-en ce que tu veux !
 
-- Merci à [Advent of Code](https://adventofcode.com/) pour la création de ces défis stimulants
-- Merci à la communauté Rust pour l'excellente documentation et les outils
+## Merci à... 🙏
+
+- La team d'[Advent of Code](https://adventofcode.com/) pour ces défis qui nous retournent le cerveau
+- La communauté Rust qui déchire avec sa doc et ses outils géniaux
