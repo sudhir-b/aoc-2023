@@ -5,6 +5,9 @@ fn part1() {
     for line in input.lines() {
         let numbers: Vec<u32> = line.chars().filter_map(|c| c.to_digit(10)).collect();
 
+        // Using .unwrap() here assumes every line will have at least one digit.
+        // For more robust code, consider handling the Option explicitly,
+        // e.g., using `if let` or filtering lines without digits earlier.
         let first = numbers.first().unwrap();
         let last = numbers.last().unwrap();
 
@@ -34,6 +37,9 @@ fn part2() {
             .filter_map(|c| c.to_digit(10))
             .collect();
 
+        // Using .unwrap() here assumes every processed line will have at least one digit
+        // after the replacements. For more robust code, consider handling the Option
+        // explicitly, similar to the note in part1.
         let first = numbers.first().unwrap();
         let last = numbers.last().unwrap();
 
