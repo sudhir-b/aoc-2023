@@ -1,6 +1,10 @@
 use std::collections::HashMap;
 
-fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u32>), usize>) -> usize {
+fn arrange(
+    springs: String,
+    groups: Vec<u32>,
+    cache: &mut HashMap<(String, Vec<u32>), usize>,
+) -> usize {
     // if combination of springs and groups is in cache, return the cached value
     if let Some(&result) = cache.get(&(springs.clone(), groups.clone())) {
         return result;
@@ -82,7 +86,8 @@ fn part1() {
         let parts: Vec<_> = line.split_whitespace().collect();
         let mut springs = parts[0].to_owned();
         springs.push('.');
-        let groups = parts[1].split(",")
+        let groups = parts[1]
+            .split(",")
             .map(|part| part.parse::<u32>().unwrap())
             .collect::<Vec<u32>>();
 
@@ -107,7 +112,8 @@ fn part2() {
         springs.pop();
         springs.push('.');
 
-        let mut groups = parts[1].split(",")
+        let mut groups = parts[1]
+            .split(",")
             .map(|part| part.parse::<u32>().unwrap())
             .collect::<Vec<u32>>();
 
