@@ -11,7 +11,7 @@ fn part1() {
         let mut number_indexes: Vec<(i32, i32)> = Vec::new();
         let mut start_index: i32 = -1;
         for index in 0..char_vec.len() {
-            if char_vec[index].is_digit(10) {
+            if char_vec[index].is_ascii_digit() {
                 if start_index == -1 {
                     start_index = index as i32;
                 }
@@ -35,15 +35,14 @@ fn part1() {
                 .parse::<i32>()
                 .unwrap();
 
-            let before_index;
-            if number_index.0 - 1 < 0 {
-                before_index = 0;
+            let before_index = if number_index.0 - 1 < 0 {
+                0
             } else {
-                before_index = (number_index.0 - 1) as usize;
-            }
+                (number_index.0 - 1) as usize
+            };
 
             let previous_char = char_vec[before_index];
-            if !previous_char.is_digit(10) && previous_char != '.' {
+            if !previous_char.is_ascii_digit() && previous_char != '.' {
                 sum += number_value;
                 continue;
             }
@@ -51,7 +50,7 @@ fn part1() {
             let after_index = number_index.1 as usize;
             if after_index != char_vec.len() {
                 let next_char = char_vec[after_index];
-                if !next_char.is_digit(10) && next_char != '.' {
+                if !next_char.is_ascii_digit() && next_char != '.' {
                     sum += number_value;
                     continue;
                 }
@@ -71,7 +70,10 @@ fn part1() {
                     .iter()
                     .collect::<String>();
                 // check for non-digit chars that are not periods
-                if previous_chars.chars().any(|c| !c.is_digit(10) && c != '.') {
+                if previous_chars
+                    .chars()
+                    .any(|c| !c.is_ascii_digit() && c != '.')
+                {
                     sum += number_value;
                     continue;
                 }
@@ -85,7 +87,7 @@ fn part1() {
                     .iter()
                     .collect::<String>();
                 // check for non-digit chars that are not periods
-                if next_chars.chars().any(|c| !c.is_digit(10) && c != '.') {
+                if next_chars.chars().any(|c| !c.is_ascii_digit() && c != '.') {
                     sum += number_value;
                     continue;
                 }
@@ -113,15 +115,15 @@ fn part2() {
                         } // Skip the center cell
                         if let Some(row) = grid.get((i as i32 + di) as usize) {
                             if let Some(&c) = row.get((j as i32 + dj) as usize) {
-                                if c.is_digit(10) {
+                                if c.is_ascii_digit() {
                                     let mut start = (j as i32 + dj) as usize;
 
-                                    while start > 0 && row[start - 1].is_digit(10) {
+                                    while start > 0 && row[start - 1].is_ascii_digit() {
                                         start -= 1;
                                     }
 
                                     let mut end = (j as i32 + dj) as usize;
-                                    while end < row.len() - 1 && row[end + 1].is_digit(10) {
+                                    while end < row.len() - 1 && row[end + 1].is_ascii_digit() {
                                         end += 1;
                                     }
 

@@ -134,10 +134,10 @@ fn bucket_and_sort_with_jokers(hands_and_bids: Vec<(&str, u16)>) -> Vec<(&str, u
                 let card1_score = card_scores.get(&card1).unwrap();
                 let card2_score = card_scores.get(&card2).unwrap();
 
-                if card1_score > card2_score {
-                    return std::cmp::Ordering::Greater;
-                } else if card1_score < card2_score {
-                    return std::cmp::Ordering::Less;
+                match card1_score.cmp(card2_score) {
+                    std::cmp::Ordering::Greater => return std::cmp::Ordering::Greater,
+                    std::cmp::Ordering::Less => return std::cmp::Ordering::Less,
+                    std::cmp::Ordering::Equal => {}
                 }
             }
 
@@ -209,10 +209,10 @@ fn bucket_and_sort(hands_and_bids: Vec<(&str, u16)>) -> Vec<(&str, u16)> {
                 let card1_score = card_scores.get(&card1).unwrap();
                 let card2_score = card_scores.get(&card2).unwrap();
 
-                if card1_score > card2_score {
-                    return std::cmp::Ordering::Greater;
-                } else if card1_score < card2_score {
-                    return std::cmp::Ordering::Less;
+                match card1_score.cmp(card2_score) {
+                    std::cmp::Ordering::Greater => return std::cmp::Ordering::Greater,
+                    std::cmp::Ordering::Less => return std::cmp::Ordering::Less,
+                    std::cmp::Ordering::Equal => {}
                 }
             }
 

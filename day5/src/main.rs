@@ -12,8 +12,8 @@ fn part1() {
         .collect();
 
     let mut maps = vec![];
-    for i in 1..=7 {
-        let mut split_group: Vec<_> = groups[i].split("\n").collect();
+    for group in groups.iter().skip(1).take(7) {
+        let mut split_group: Vec<_> = group.split("\n").collect();
         split_group.remove(0);
 
         // remove empty strings
@@ -35,21 +35,21 @@ fn part1() {
     }
 
     for map in maps {
-        for i in 0..seeds.len() {
+        for seed in &mut seeds {
             for mapping in &map {
                 // check seed is in the range of mapping.1 to mapping.1 + mapping.2
                 let source_range_start = mapping.1;
                 let source_range_end = mapping.1 + mapping.2;
 
-                let offset: Option<u64>;
-                if seeds[i] >= source_range_start && seeds[i] <= source_range_end {
-                    offset = Some(seeds[i] - source_range_start);
-                } else {
-                    offset = None;
-                }
+                let offset: Option<u64> =
+                    if *seed >= source_range_start && *seed <= source_range_end {
+                        Some(*seed - source_range_start)
+                    } else {
+                        None
+                    };
 
                 if let Some(offset) = offset {
-                    seeds[i] = mapping.0 + offset;
+                    *seed = mapping.0 + offset;
                     break;
                 }
             }
@@ -74,8 +74,8 @@ fn part2() {
         .collect();
 
     let mut maps = vec![];
-    for i in 1..=7 {
-        let mut split_group: Vec<_> = groups[i].split("\n").collect();
+    for group in groups.iter().skip(1).take(7) {
+        let mut split_group: Vec<_> = group.split("\n").collect();
         split_group.remove(0);
 
         // remove empty strings
@@ -104,8 +104,7 @@ fn part2() {
 
     for map in maps {
         let mut new_seeds = vec![];
-        while seeds.len() > 0 {
-            let end = seeds.pop().unwrap();
+        while let Some(end) = seeds.pop() {
             let start = seeds.pop().unwrap();
 
             let mut range_processed = false;
