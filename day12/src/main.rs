@@ -1,6 +1,10 @@
 use std::collections::HashMap;
 
-fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u32>), usize>) -> usize {
+fn arrange(
+    springs: String,
+    groups: Vec<u32>,
+    cache: &mut HashMap<(String, Vec<u32>), usize>,
+) -> usize {
     // if combination of springs and groups is in cache, return the cached value
     if let Some(&result) = cache.get(&(springs.clone(), groups.clone())) {
         return result;
@@ -12,12 +16,11 @@ fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u
     //     store result in cache and return
 
     if groups.is_empty() {
-        let valid: usize;
-        if springs.chars().any(|c| c == '#') {
-            valid = 0;
+        let valid = if springs.chars().any(|c| c == '#') {
+            0
         } else {
-            valid = 1;
-        }
+            1
+        };
 
         cache.insert((springs, groups), valid);
         return valid;
@@ -41,7 +44,7 @@ fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u
         return 0;
     }
 
-    let next_char = springs.chars().nth(0).unwrap();
+    let next_char = springs.chars().next().unwrap();
     if next_char == '.' {
         let result = arrange(springs[1..].to_owned(), groups.clone(), cache);
         cache.insert((springs, groups), result);
@@ -51,7 +54,7 @@ fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u
     let group = groups[0];
     let mut running_total = 0;
     if springs[0..group as usize].chars().all(|c| c != '.')
-        && springs[group as usize..].chars().nth(0) != Some('#')
+        && !springs[group as usize..].starts_with('#')
     {
         let result = arrange(
             springs[group as usize + 1..].to_owned(),
@@ -68,7 +71,7 @@ fn arrange(springs: String, groups: Vec<u32>, cache: &mut HashMap<(String, Vec<u
 
     cache.insert((springs, groups), running_total);
 
-    return running_total;
+    running_total
 }
 
 fn part1() {
@@ -82,7 +85,8 @@ fn part1() {
         let parts: Vec<_> = line.split_whitespace().collect();
         let mut springs = parts[0].to_owned();
         springs.push('.');
-        let groups = parts[1].split(",")
+        let groups = parts[1]
+            .split(",")
             .map(|part| part.parse::<u32>().unwrap())
             .collect::<Vec<u32>>();
 
@@ -107,7 +111,8 @@ fn part2() {
         springs.pop();
         springs.push('.');
 
-        let mut groups = parts[1].split(",")
+        let mut groups = parts[1]
+            .split(",")
             .map(|part| part.parse::<u32>().unwrap())
             .collect::<Vec<u32>>();
 

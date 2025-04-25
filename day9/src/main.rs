@@ -16,24 +16,24 @@ fn part1() {
     for line in input.lines() {
         let numbers: Vec<isize> = line.split(" ").map(|x| x.parse().unwrap()).collect();
 
-        let mut last_elements = vec![numbers.last().unwrap().clone()];
+        let mut last_elements = vec![*numbers.last().unwrap()];
 
         let mut current_differences: Vec<isize> = get_differences(numbers);
         let mut zero_differences = current_differences.iter().all(|&x| x == 0);
 
-        last_elements.push(current_differences.last().unwrap().clone());
+        last_elements.push(*current_differences.last().unwrap());
 
         while !zero_differences {
             current_differences = get_differences(current_differences);
-            last_elements.push(current_differences.last().unwrap().clone());
+            last_elements.push(*current_differences.last().unwrap());
             zero_differences = current_differences.iter().all(|&x| x == 0);
         }
 
         last_elements.reverse();
 
         let mut carry: isize = 0;
-        for i in 1..last_elements.len() {
-            carry += last_elements[i];
+        for &element in last_elements.iter().skip(1) {
+            carry += element;
         }
 
         sum_of_extrapolated_numbers += carry;
@@ -50,24 +50,24 @@ fn part2() {
     for line in input.lines() {
         let numbers: Vec<isize> = line.split(" ").map(|x| x.parse().unwrap()).collect();
 
-        let mut first_elements = vec![numbers.first().unwrap().clone()];
+        let mut first_elements = vec![*numbers.first().unwrap()];
 
         let mut current_differences: Vec<isize> = get_differences(numbers);
         let mut zero_differences = current_differences.iter().all(|&x| x == 0);
 
-        first_elements.push(current_differences.first().unwrap().clone());
+        first_elements.push(*current_differences.first().unwrap());
 
         while !zero_differences {
             current_differences = get_differences(current_differences);
-            first_elements.push(current_differences.first().unwrap().clone());
+            first_elements.push(*current_differences.first().unwrap());
             zero_differences = current_differences.iter().all(|&x| x == 0);
         }
 
         first_elements.reverse();
 
         let mut carry: isize = 0;
-        for i in 1..first_elements.len() {
-            carry = first_elements[i] - carry;
+        for &element in first_elements.iter().skip(1) {
+            carry = element - carry;
         }
 
         sum_of_extrapolated_numbers += carry;

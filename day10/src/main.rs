@@ -53,7 +53,7 @@ fn part1() {
 }
 
 fn find_connections(
-    grid: &Vec<Vec<char>>,
+    grid: &[Vec<char>],
     position: (usize, usize),
     previous_position: Option<(usize, usize)>,
 ) -> Vec<(usize, usize)> {
@@ -203,7 +203,7 @@ fn part2() {
 
         let connections = find_connections(&grid, current_position, Some(previous_position));
 
-        if connections.len() == 0 {
+        if connections.is_empty() {
             // probably back at the beginning
             break;
         }
@@ -220,7 +220,7 @@ fn part2() {
         fill_grid(&mut path_grid, current_position, previous_position);
 
         let connections = find_connections(&grid, current_position, Some(previous_position));
-        if connections.len() == 0 {
+        if connections.is_empty() {
             // probably back at the beginning
             break;
         }
@@ -230,17 +230,13 @@ fn part2() {
     }
 
     // count the 'I' characters
-    let count = path_grid
-        .iter()
-        .flat_map(|x| x)
-        .filter(|&x| *x == 'I')
-        .count();
+    let count = path_grid.iter().flatten().filter(|&x| *x == 'I').count();
 
     println!("Part 2: {}", count);
 }
 
 fn fill_grid(
-    path_grid: &mut Vec<Vec<char>>,
+    path_grid: &mut [Vec<char>],
     current_position: (usize, usize),
     previous_position: (usize, usize),
 ) {
@@ -325,7 +321,7 @@ fn fill_grid(
     }
 }
 
-fn fill_left(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
+fn fill_left(path_grid: &mut [Vec<char>], current_position: (usize, usize)) {
     let (x, y) = current_position;
     let mut x = x;
 
@@ -338,7 +334,7 @@ fn fill_left(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
     }
 }
 
-fn fill_right(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
+fn fill_right(path_grid: &mut [Vec<char>], current_position: (usize, usize)) {
     let (x, y) = current_position;
     let mut x = x;
 
@@ -351,7 +347,7 @@ fn fill_right(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) 
     }
 }
 
-fn fill_up(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
+fn fill_up(path_grid: &mut [Vec<char>], current_position: (usize, usize)) {
     let (x, y) = current_position;
     let mut y = y;
 
@@ -364,7 +360,7 @@ fn fill_up(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
     }
 }
 
-fn fill_down(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
+fn fill_down(path_grid: &mut [Vec<char>], current_position: (usize, usize)) {
     let (x, y) = current_position;
     let mut y = y;
 
@@ -378,10 +374,7 @@ fn fill_down(path_grid: &mut Vec<Vec<char>>, current_position: (usize, usize)) {
 }
 
 fn is_path_char(c: char) -> bool {
-    match c {
-        '┗' | '┛' | '┓' | '┏' | '┃' | '━' | 'S' => true,
-        _ => false,
-    }
+    matches!(c, '┗' | '┛' | '┓' | '┏' | '┃' | '━' | 'S')
 }
 
 fn convert_to_box_symbol(c: char) -> char {

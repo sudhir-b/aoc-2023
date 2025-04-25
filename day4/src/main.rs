@@ -60,8 +60,9 @@ fn part2() {
         let end_index = start_index + winning_numbers_count;
 
         for _ in 0..card_counts[i] {
-            for j in start_index..end_index {
-                card_counts[j] += 1;
+            // Using slice indexing instead of loop indexing
+            for card_count in &mut card_counts[start_index..end_index] {
+                *card_count += 1;
             }
         }
     }

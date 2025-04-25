@@ -1,10 +1,10 @@
-fn transpose(input_matrix: &Vec<Vec<char>>) -> Vec<Vec<char>> {
+fn transpose(input_matrix: &[Vec<char>]) -> Vec<Vec<char>> {
     let mut output_matrix: Vec<Vec<char>> = vec![];
 
     for i in 0..input_matrix[0].len() {
         let mut row: Vec<char> = vec![];
-        for j in 0..input_matrix.len() {
-            row.push(input_matrix[j][i]);
+        for item in input_matrix {
+            row.push(item[i]);
         }
         output_matrix.push(row);
     }
@@ -12,7 +12,7 @@ fn transpose(input_matrix: &Vec<Vec<char>>) -> Vec<Vec<char>> {
     output_matrix
 }
 
-fn expand_rows(grid: &mut Vec<Vec<char>>) -> Vec<Vec<char>> {
+fn expand_rows(grid: &mut [Vec<char>]) -> Vec<Vec<char>> {
     let mut result_grid: Vec<Vec<char>> = vec![];
 
     // expand empty rows
@@ -26,7 +26,7 @@ fn expand_rows(grid: &mut Vec<Vec<char>>) -> Vec<Vec<char>> {
     result_grid
 }
 
-fn expand_space(grid: &mut Vec<Vec<char>>) -> Vec<Vec<char>> {
+fn expand_space(grid: &mut [Vec<char>]) -> Vec<Vec<char>> {
     let expanded_rows = expand_rows(grid);
     let expanded_columns = expand_rows(&mut transpose(&expanded_rows));
     transpose(&expanded_columns)

@@ -16,11 +16,10 @@ fn part1() {
                 let cube_colour_amount: Vec<&str> = cube_colour_amount.split_whitespace().collect();
                 let cube_amount = cube_colour_amount[0].parse::<u32>().unwrap();
                 let cube_colour = cube_colour_amount[1];
-                if cube_colour == "red" && cube_amount > 12 {
-                    game_possible = false;
-                } else if cube_colour == "green" && cube_amount > 13 {
-                    game_possible = false;
-                } else if cube_colour == "blue" && cube_amount > 14 {
+                if (cube_colour == "red" && cube_amount > 12)
+                    || (cube_colour == "green" && cube_amount > 13)
+                    || (cube_colour == "blue" && cube_amount > 14)
+                {
                     game_possible = false;
                 }
             }
